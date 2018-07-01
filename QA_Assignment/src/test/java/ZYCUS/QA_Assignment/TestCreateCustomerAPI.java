@@ -1,8 +1,5 @@
 package ZYCUS.QA_Assignment;
 
-/*import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;*/
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
@@ -16,16 +13,18 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 
-public class TestCreateCustomerAPI extends Mockito{ 
+public class TestCreateCustomerAPI extends Mockito{
+	
+	//given:
+		HttpClient httpClient = mock(HttpClient.class);
+        HttpGet httpGet = mock(HttpGet.class);
+        HttpResponse httpResponse = mock(HttpResponse.class);
+        StatusLine statusLine = mock(StatusLine.class);
+	
 	
 	 @Test
 	    public void should_return_true_if_the_status_api_works_properly() throws ClientProtocolException, IOException {
-	        //given:
-	        HttpClient httpClient = mock(HttpClient.class);
-	        HttpGet httpGet = mock(HttpGet.class);
-	        HttpResponse httpResponse = mock(HttpResponse.class);
-	        StatusLine statusLine = mock(StatusLine.class);
-
+	        
 	        //and:
 	        when(statusLine.getStatusCode()).thenReturn(200);
 	        when(statusLine.getReasonPhrase()).thenReturn("OK");
@@ -45,11 +44,7 @@ public class TestCreateCustomerAPI extends Mockito{
 	 @Test
 	    public void should_return_false_if_status_api_do_not_respond() throws ClientProtocolException, IOException {
 	        //given:
-	        HttpClient httpClient = mock(HttpClient.class);
-	        HttpGet httpGet = mock(HttpGet.class);
-	        HttpResponse httpResponse = mock(HttpResponse.class);
-	        StatusLine statusLine = mock(StatusLine.class);
-
+	        
 	        //and:
 	        when(httpClient.execute(httpGet)).thenThrow(HttpHostConnectException.class);
 

@@ -44,6 +44,12 @@ public class CreateCustomerAPI
                 LOG.debug("Is online.");
                 //status = String.valueOf(response.getStatusLine().getStatusCode());
                 status = response.getStatusLine().getReasonPhrase();
+                
+            }
+            else if(response.getStatusLine().getStatusCode() == Status.BAD_GATEWAY.getStatusCode()) {
+            	LOG.debug("Bad Gateway.");
+                //status = String.valueOf(response.getStatusLine().getStatusCode());
+                status = response.getStatusLine().getReasonPhrase();
             }
 
         } catch(Exception e) {
