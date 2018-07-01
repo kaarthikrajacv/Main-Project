@@ -51,6 +51,12 @@ public class CreateCustomerAPI
                 //status = String.valueOf(response.getStatusLine().getStatusCode());
                 status = response.getStatusLine().getReasonPhrase();
             }
+            else if(response.getStatusLine().getStatusCode() == Status.ACCEPTED.getStatusCode()) {
+            	LOG.debug("Bad Gateway.");
+                //status = String.valueOf(response.getStatusLine().getStatusCode());
+                status = response.getStatusLine().getReasonPhrase();
+            }
+            
 
         } catch(Exception e) {
             LOG.error("Error getting the status", e);

@@ -20,14 +20,18 @@ public class TestCreateCustomerAPI extends Mockito{
         HttpGet httpGet = mock(HttpGet.class);
         HttpResponse httpResponse = mock(HttpResponse.class);
         StatusLine statusLine = mock(StatusLine.class);
+        
+        String[] statusCode = {"200","202","502"};
+        String[] reason = {"OK","Accepted","Bad Gateway"};
 	
 	
 	 @Test
 	    public void should_return_true_if_the_status_api_works_properly() throws ClientProtocolException, IOException {
 	        
-	        //and:
-	        when(statusLine.getStatusCode()).thenReturn(200);
-	        when(statusLine.getReasonPhrase()).thenReturn("OK");
+	    for(int i=0;i<reason.length;i++) {
+		 //and:
+	        when(statusLine.getStatusCode()).thenReturn(Integer.parseInt(statusCode[i]));
+	        when(statusLine.getReasonPhrase()).thenReturn(reason[i]);
 	        when(httpResponse.getStatusLine()).thenReturn(statusLine);
 	        when(httpClient.execute(httpGet)).thenReturn(httpResponse);
 
@@ -38,7 +42,8 @@ public class TestCreateCustomerAPI extends Mockito{
 	        String status = client.getStatus();
 
 	        //then:
-	        Assert.assertEquals(status, "OK");
+	        Assert.assertEquals(status, reason[i]);
+	    }
 	    }
 	 
 	 @Test
