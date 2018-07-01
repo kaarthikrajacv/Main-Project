@@ -28,6 +28,7 @@ public class TestCreateCustomerAPI extends Mockito{
 
 	        //and:
 	        when(statusLine.getStatusCode()).thenReturn(200);
+	        when(statusLine.getReasonPhrase()).thenReturn("OK");
 	        when(httpResponse.getStatusLine()).thenReturn(statusLine);
 	        when(httpClient.execute(httpGet)).thenReturn(httpResponse);
 
@@ -38,7 +39,29 @@ public class TestCreateCustomerAPI extends Mockito{
 	        String status = client.getStatus();
 
 	        //then:
-	        Assert.assertEquals(status, "200");
+	        Assert.assertEquals(status, "OK");
+	    }
+	 
+	 @Test
+	    public void should_return_false_if_status_api_do_not_respond() throws ClientProtocolException, IOException {
+	        //given:
+	        HttpClient httpClient = mock(HttpClient.class);
+	        HttpGet httpGet = mock(HttpGet.class);
+	        HttpResponse httpResponse = mock(HttpResponse.class);
+	        StatusLine statusLine = mock(StatusLine.class);
+
+	        //and:
+	        when(httpClient.execute(httpGet)).thenThrow(HttpHostConnectException.class);
+
+	        //and:
+	        CreateCustomerAPI client = new CreateCustomerAPI(httpClient, httpGet);
+
+	        //when:
+	        String status = client.getStatus();
+
+	        //then:
+	        Assert.assertEquals(status, "");
+	        
 	    }
     
 }

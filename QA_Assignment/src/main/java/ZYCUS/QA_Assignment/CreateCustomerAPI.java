@@ -42,7 +42,8 @@ public class CreateCustomerAPI
 
             if(response.getStatusLine().getStatusCode() == Status.OK.getStatusCode()) {
                 LOG.debug("Is online.");
-                status = String.valueOf(response.getStatusLine().getStatusCode());
+                //status = String.valueOf(response.getStatusLine().getStatusCode());
+                status = response.getStatusLine().getReasonPhrase();
             }
 
         } catch(Exception e) {
