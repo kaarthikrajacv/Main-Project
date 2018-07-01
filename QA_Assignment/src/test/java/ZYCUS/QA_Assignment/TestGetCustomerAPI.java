@@ -19,8 +19,8 @@ public class TestGetCustomerAPI extends Mockito{
     HttpResponse httpResponse = mock(HttpResponse.class);
     StatusLine statusLine = mock(StatusLine.class);
     
-    String[] statusCode = {"200","202","502"};
-    String[] reason = {"OK","Accepted","Bad Gateway"};
+    String[] statusCode = {"200","202","502","400","404"};
+    String[] reason = {"OK","Accepted","Bad Gateway","Bad Request","Not Found"};
 
 
  @Test

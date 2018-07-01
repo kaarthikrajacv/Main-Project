@@ -56,6 +56,16 @@ private static final Logger LOG = LoggerFactory.getLogger(CreateCustomerAPI.clas
                 //status = String.valueOf(response.getStatusLine().getStatusCode());
                 status = response.getStatusLine().getReasonPhrase();
             }
+            else if(response.getStatusLine().getStatusCode() == Status.BAD_REQUEST.getStatusCode()) {
+            	LOG.debug("Bad Request.");
+                //status = String.valueOf(response.getStatusLine().getStatusCode());
+                status = response.getStatusLine().getReasonPhrase();
+            }
+            else if(response.getStatusLine().getStatusCode() == Status.NOT_FOUND.getStatusCode()) {
+            	LOG.debug("Not Found.");
+                //status = String.valueOf(response.getStatusLine().getStatusCode());
+                status = response.getStatusLine().getReasonPhrase();
+            }
             
 
         } catch(Exception e) {
