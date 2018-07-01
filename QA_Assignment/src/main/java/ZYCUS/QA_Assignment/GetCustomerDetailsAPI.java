@@ -20,6 +20,9 @@ private static final Logger LOG = LoggerFactory.getLogger(CreateCustomerAPI.clas
     private HttpClient client = null;
     HttpGet httpGet = null;
     
+    /*
+     * Constructor to set HTTP objects called from Test functions
+     */
     public GetCustomerDetailsAPI(HttpClient client, HttpGet httpGet) {
         this.client = client;
         this.httpGet = httpGet;
@@ -31,6 +34,9 @@ private static final Logger LOG = LoggerFactory.getLogger(CreateCustomerAPI.clas
         this.httpGet = new HttpGet(targetUrl);
     }
     
+    /*
+     * get status of the Mocked response that is returned from MOcked API
+     */
     public String getStatus() {
         BufferedReader rd = null;
         String status = "";

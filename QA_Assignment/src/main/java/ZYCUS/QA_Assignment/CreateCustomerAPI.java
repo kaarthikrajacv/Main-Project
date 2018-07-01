@@ -20,6 +20,9 @@ public class CreateCustomerAPI
     private HttpClient client = null;
     HttpGet httpGet = null;
     
+    /*
+     * Constructor to set HTTP objects called from Test functions
+     */
     public CreateCustomerAPI(HttpClient client, HttpGet httpGet) {
         this.client = client;
         this.httpGet = httpGet;
@@ -31,6 +34,9 @@ public class CreateCustomerAPI
         this.httpGet = new HttpGet(targetUrl);
     }
     
+    /*
+     * get status of the Mocked response that is returned from MOcked API
+     */
     public String getStatus() {
         BufferedReader rd = null;
         String status = "";
