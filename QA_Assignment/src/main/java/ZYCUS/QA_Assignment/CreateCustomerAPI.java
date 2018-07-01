@@ -12,7 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CreateCustomerAPI 
+public class CreateCustomerAPI
 {
 	private static final Logger LOG = LoggerFactory.getLogger(CreateCustomerAPI.class);
 	
